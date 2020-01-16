@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// コンポーネント名はUpperCamelCase
+import React, { useState } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import styled from 'styled-components'
+
+import Form from './Form'
+import List from './List'
+
+const App = () => {
+    const [todos, setTodos] = useState([
+        '課題をする',
+        '洗濯をする',
+        '仕事をする',
+        'あああああ'
+    ])
+
+    return (
+        <>
+            <Title>Todo APP</Title>
+            <Form></Form>
+            <List todos={todos}></List>
+        </>
+    )
 }
 
-export default App;
+const Title = styled.h1`
+    text-align: center;
+`
+
+export default App
