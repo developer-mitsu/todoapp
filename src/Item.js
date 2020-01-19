@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 
-const Item = ({ content }) => {
+const Item = ({ 
+    content, 
+    deleteTodo, 
+    id 
+}) => {
     // useStateは、現在のstateと
     // 、それを更新するための関数とを、ペアにして返す
     const [isDone, setIsDone] = useState(false)
     const renderLine = isDone ? 'line-through': 'none'
-    
-    // const handleChange = () => {
-    //     setIsDone(!isDone)
-    // }
+
+    const handleDelete = () => {
+        deleteTodo(id)
+    }
 
     return (
         <li>
@@ -19,6 +23,7 @@ const Item = ({ content }) => {
                 }} 
             />
             <span style={{textDecoration: renderLine}}>{content}</span>
+            <button onClick={handleDelete}>削除</button>
         </li>
     )
 }
