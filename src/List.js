@@ -6,10 +6,10 @@ const List = ({ todos, deleteTodo }) => {
     return (
         <ul>
             {
-                todos.map((todo, index) => 
+                todos.map((todo) => 
                     <Item
-                        id={index}
-                        content={todo}
+                        id={todo.id}
+                        content={todo.content}
                         deleteTodo={deleteTodo}
                     ></Item>
                 )
