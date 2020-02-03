@@ -46,9 +46,9 @@ const App = () => {
 
         axios.delete(`http://localhost:3001/todos/${id}`)
             .then(res => {
-                // if (res.status !== 200) {
-                //     return;
-                // }
+                if (res.status !== 200) {
+                    return;
+                }
                 setTodos(todos.filter((todo) => todo.id !== id))
             })
     }
