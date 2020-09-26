@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Form from './Form'
+import List from './List'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import shortid from 'shortid'
+
+const App = () => {
+    const [todos, setTodos] = useState([])
+
+    const addTodo = value => {
+        const newTodos = [
+            ...todos,
+            {
+                content: value,
+                id: shortid.generate()
+            }
+        ]
+
+        setTodos(newTodos)
+    }
+
+    const deleteTodo = id => {
+        //*  まず、どのidの要素を削除するかを把握する必要がある
+        alert(`id: ${id}の要素が削除されます。`)
+
+        //TODO: 渡されたidの要素を削除する処理を書く
+    }
+
+    return (
+        <>
+            <h1>TodoApp</h1>
+            <Form addTodo={addTodo}></Form>
+            <List deleteTodo={deleteTodo} todos={todos}></List>
+        </>
+    )
 }
 
-export default App;
+export default App
